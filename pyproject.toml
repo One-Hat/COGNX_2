@@ -1,0 +1,22 @@
+[project]
+name = "mnema-arch"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Swapnil", email = "swapnil7x@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "matplotlib>=3.11.1",
+    "numpy>=2.5.2",
+    "pyyaml>=6.0.3",
+    "streamlit>=1.62.0",
+]
+
+[project.scripts]
+mnema-arch = "mnema_arch:main"
+
+[build-system]
+requires = ["uv_build>=0.12.6,<0.13.0"]
+build-backend = "uv_build"

@@ -1,0 +1,6 @@
+name: "Intel Loihi 2"
+source: "Davies et al., IEEE Micro 2018; Orchard et al., SiPS 2021"
+synop_J: 23.6e-12
+neuron_update_J: 81.0e-12
+sram_read_32b_J: 5.0e-12
+note: "Vendor-reported neuromorphic baseline; measurement processes not standardized across chips."

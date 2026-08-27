@@ -1,0 +1,7 @@
+name: "Standard ASIC (45nm CMOS)"
+source: "Horowitz, ISSCC 2014"
+mac_fp32_J: 3.7e-12
+add_int32_J: 0.1e-12
+sram_read_32b_J: 5.0e-12
+dram_read_32b_J: 640.0e-12
+note: "Standard computer architecture reference; demonstrates memory movement energy dominance."

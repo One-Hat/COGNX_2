@@ -1,0 +1,5 @@
+name: "ODIN (28nm FDSOI)"
+source: "Frenkel et al., IEEE TBCAS 2018"
+synop_J: 12.7e-12
+neuron_update_J: 30.0e-12
+sram_read_32b_J: 3.0e-12
