@@ -10,3 +10,8 @@ data/
 .DS_Store
 Thumbs.db
 
+# Internal presentation / pitch documents (not for distribution)
+COGNX_PITCH_PLAYBOOK.md
+MNEMA_PROTOTYPE_DEFENSE_GUIDE.md
+MNEMA_TECHNICAL_DEFENSE_DOSSIER.md
+
