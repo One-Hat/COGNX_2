@@ -1,0 +1,5 @@
+﻿Contributor,MNEMA (uJ),MNEMA %,Dense MLP (uJ),MLP %
+compute: dense MACs,0.0000,0.0%,0.7521,42.5%
+compute: integer adds,0.0119,3.7%,0.0000,0.0%
+data movement: SRAM reads,0.3046,96.3%,1.0163,57.5%
+TOTAL,0.3164,100.0%,1.7684,100.0%

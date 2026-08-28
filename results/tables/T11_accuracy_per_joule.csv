@@ -1,0 +1,4 @@
+﻿Model,Final Accuracy,uJ per Inference,Accuracy per uJ
+MLP (Naive),19.2%,1.7684,10.9
+MLP (+Replay),62.8%,1.7684,35.5
+MNEMA,57.6%,0.3164,182.0

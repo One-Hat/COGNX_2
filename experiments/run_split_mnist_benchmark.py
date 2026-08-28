@@ -1,3 +1,10 @@
+# Copyright (c) 2026 COGNX. All Rights Reserved.
+#
+# PROPRIETARY AND CONFIDENTIAL. This file is part of MNEMA, proprietary software
+# of COGNX. It is not open source. No right to use, copy, modify, distribute, or
+# create derivative works is granted. Unauthorized use or disclosure is prohibited.
+# See the LICENSE file at the repository root for the full terms.
+
 import sys
 import os
 import json
@@ -27,20 +34,24 @@ def evaluate_retention(model, tasks, up_to_task, is_mnema=False, instrument=None
         accs.append(correct / len(test_y))
     return accs
 
-def run_benchmark():
-    print("=== COGNX MNEMA: Class-Incremental Split-MNIST Benchmark ===\n")
+def run_benchmark(seed=0):
+    print("=== COGNX MNEMA: Class-Incremental Split-MNIST Benchmark ===")
+    print(f"(seed={seed}; run experiments/run_variance.py for multi-seed error bars)\n")
     tasks = load_split_mnist()
-    
-    models = {
-        "MLP (Naive)": (BaselineMLP(use_replay=False), False),
-        "MLP (+Replay Buffer)": (BaselineMLP(use_replay=True, buffer_size=300), False),
-        "MNEMA (Full Engine)": (MNEMA(n_in=784, n_s=16384, k=64, d=10, budget_bytes=65536), True)
+
+    # Models are constructed lazily under a fixed seed so each run is reproducible.
+    builders = {
+        "MLP (Naive)": (lambda: BaselineMLP(use_replay=False), False),
+        "MLP (+Replay Buffer)": (lambda: BaselineMLP(use_replay=True, buffer_size=300), False),
+        "MNEMA (Full Engine)": (lambda: MNEMA(n_in=784, n_s=16384, k=64, d=10, budget_bytes=65536), True)
     }
 
     results = {}
 
-    for name, (model, is_mnema) in models.items():
+    for name, (build, is_mnema) in builders.items():
         print(f"--- Benchmarking: {name} ---")
+        np.random.seed(seed)
+        model = build()
         instrument = EnergyInstrument(tech_card_path="instrument/tech/asic_45nm.yaml")
         
         # Retention matrix R[t, j]
@@ -90,4 +101,4 @@ def run_benchmark():
     print("=== Benchmark Finished. Results saved to results/benchmark_results.json ===")
 
 if __name__ == "__main__":
-    run_benchmark()
+    run_benchmark(int(sys.argv[1]) if len(sys.argv) > 1 else 0)

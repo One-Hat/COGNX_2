@@ -1,0 +1,66 @@
+{
+  "mnema_footprint_bytes": {
+    "[S] separator.indices (frozen connectivity)": 524288,
+    "[S] separator.theta (homeostatic thresh)": 65536,
+    "[S] separator.running_rate": 65536,
+    "[F] store.M (associative weights, alloc)": 327680,
+    "[F] store.s (salience)": 65536,
+    "[F] store.tau (timestamps)": 65536,
+    "[C] cortex.syn_fc.u (Benna-Fusi m=4)": 2621440,
+    "[C] cortex.eligibility (trace)": 655360,
+    "[C] cortex.v + cortex.b (neuron state)": 80
+  },
+  "mnema_total_bytes": 4390992,
+  "mlp_naive_footprint_bytes": {
+    "W1 (784x256 fp32)": 1605632,
+    "b1": 1024,
+    "W2 (256x10 fp32)": 20480,
+    "b2": 40
+  },
+  "mlp_replay_footprint_bytes": {
+    "W1 (784x256 fp32)": 1605632,
+    "b1": 1024,
+    "W2 (256x10 fp32)": 20480,
+    "b2": 40,
+    "replay buffer (300 raw samples fp32)": 940800
+  },
+  "per_sample": {
+    "MNEMA": {
+      "wall_ms": 2.5803150003775954,
+      "energy_uj": 0.316423225,
+      "ops": {
+        "macs": 0,
+        "adds": 118600,
+        "synops": 640,
+        "spikes": 754
+      }
+    },
+    "MLP": {
+      "wall_ms": 0.14011749997735023,
+      "energy_uj": 1.7683967999999997,
+      "ops": {
+        "macs": 203264,
+        "adds": 0,
+        "synops": 0,
+        "spikes": 0
+      }
+    }
+  },
+  "tech_cards": {
+    "asic_45nm": {
+      "name": "Standard ASIC (45nm CMOS)",
+      "source": "Horowitz, ISSCC 2014",
+      "uj_per_sample": 0.31641418749999994
+    },
+    "loihi2": {
+      "name": "Intel Loihi 2",
+      "source": "Davies et al., IEEE Micro 2018; Orchard et al., SiPS 2021",
+      "uj_per_sample": 0.32047783750000003
+    },
+    "odin_28nm": {
+      "name": "ODIN (28nm FDSOI)",
+      "source": "Frenkel et al., IEEE TBCAS 2018",
+      "uj_per_sample": 0.19117105
+    }
+  }
+}

@@ -1,0 +1,4 @@
+﻿Technology,Published Source,uJ per Inference,vs 45nm Baseline
+Standard ASIC (45nm CMOS),"Horowitz, ISSCC 2014",0.3164,1.00x
+Intel Loihi 2,"Davies et al., IEEE Micro 2018; Orchard et al., SiPS 2021",0.3205,0.99x
+ODIN (28nm FDSOI),"Frenkel et al., IEEE TBCAS 2018",0.1912,1.66x

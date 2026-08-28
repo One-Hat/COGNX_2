@@ -1,0 +1,10 @@
+{
+  "eligibility_elements": 163840,
+  "eligibility_kb": 640.0,
+  "uncounted_multiplies_per_forward": 163840,
+  "counted_uj_per_inference": 0.316423225,
+  "uncounted_uj_per_inference": 2.244608,
+  "true_cost_uj_per_inference": 2.561031225,
+  "understatement_factor": 8.093689156350644,
+  "eligibility_mutates_in_inference": false
+}

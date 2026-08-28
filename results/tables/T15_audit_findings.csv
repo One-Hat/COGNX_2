@@ -1,0 +1,9 @@
+﻿Finding,Value
+Eligibility trace size,"163,840 fp32 (640 KB)"
+Uncounted multiplies per forward pass,"163,840"
+Uncounted multiplies per Benna-Fusi update,"~1,638,400"
+Counted energy per inference (before fix),0.3164 uJ
+True energy per inference (before fix),2.5610 uJ
+Understatement factor (inference path),8.09x
+Understatement factor (full benchmark),~26x
+Status after fix,Both paths instrumented; eligibility gated behind is_training

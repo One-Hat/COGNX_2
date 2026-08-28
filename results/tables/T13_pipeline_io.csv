@@ -1,0 +1,7 @@
+﻿Stage,Output,Shape / dtype,Measured occupancy
+"[E] EventEncoder (TTFS, T=16)",Spike raster,"[16, 784] uint8",755 spikes = 6.0% dense
+[S] SparseSeparator,Active indices,[64] int32,"64 of 16,384 = 0.39% sparse"
+[F] FastStore.read,Vote vector + confidence,[10] float32 + scalar,"640 integer adds, 0 MACs"
+[C] SlowCortex.forward,Membrane potentials,[10] float32,640 synops
+[R] ReadoutArbitrator,"Prediction, probs, alpha","int, [10] float32, float",-
+[N] Controller,ModulatorBus,"4 floats (nu, delta, sigma, phi)",sigma currently unused

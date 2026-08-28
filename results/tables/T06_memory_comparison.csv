@@ -1,0 +1,4 @@
+﻿Model,Fixed Scaffold (KB),Learned/Buffer (KB),Total (KB),Learned-Memory Growth,Stores Raw User Data
+MLP (Naive),"1,589.0",0.0,"1,589.0",Unbounded weights,No
+MLP (+Replay),"1,589.0",918.8,"2,507.8",Linear O(N) - grows,Yes
+MNEMA,"4,224.1",64.0,"4,288.1",Hard cap 64 KB - flat,No

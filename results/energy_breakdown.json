@@ -1,0 +1,22 @@
+{
+  "n_inferences": 200,
+  "mnema_uj_per_inference": 0.316423225,
+  "mlp_uj_per_inference": 1.7683967999999997,
+  "mnema_parts_uj": {
+    "compute: dense MACs": 0.0,
+    "compute: integer adds": 0.01186,
+    "compute: sparse synops": 0.0,
+    "compute: neuron updates": 0.0,
+    "data movement: SRAM reads": 0.304563225,
+    "data movement: DRAM reads": 0.0
+  },
+  "mlp_parts_uj": {
+    "compute: dense MACs": 0.7520768,
+    "compute: integer adds": 0.0,
+    "compute: sparse synops": 0.0,
+    "compute: neuron updates": 0.0,
+    "data movement: SRAM reads": 1.01632,
+    "data movement: DRAM reads": 0.0
+  },
+  "mnema_spikes_per_sample": 754.58
+}

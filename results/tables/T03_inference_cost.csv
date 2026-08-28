@@ -1,0 +1,7 @@
+﻿Metric,MNEMA,Dense MLP,MNEMA Advantage
+Dense MACs,0,"203,264",infinite
+Integer adds,"118,600",0,-
+Sparse SynOps,640,0,-
+Input spikes,754,n/a,-
+Projected energy (uJ),0.3164,1.7684,5.59x
+"Wall clock (ms, NumPy/CPU)",2.580,0.140,18.4x SLOWER (see note)

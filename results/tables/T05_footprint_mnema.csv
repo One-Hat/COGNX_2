@@ -1,0 +1,12 @@
+﻿Component,Size (KB),Grows with task count?
+[S] separator.indices (frozen connectivity),512.0,No
+[S] separator.theta (homeostatic thresh),64.0,No
+[S] separator.running_rate,64.0,No
+"[F] store.M (associative weights, alloc)",320.0,No
+[F] store.s (salience),64.0,No
+[F] store.tau (timestamps),64.0,No
+[C] cortex.syn_fc.u (Benna-Fusi m=4),"2,560.0",No
+[C] cortex.eligibility (trace),640.0,No
+[C] cortex.v + cortex.b (neuron state),0.1,No
+TOTAL RESIDENT,"4,288.1",Flat
+-- of which learned content (hard cap),64.0,Flat by construction

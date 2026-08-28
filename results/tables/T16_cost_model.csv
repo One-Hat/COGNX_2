@@ -1,0 +1,8 @@
+﻿Operation,Energy,Relative Cost
+One MNEMA local inference,0.316 uJ,1x
+One dense MLP local inference,1.768 uJ,5.6x
+"One cloud round trip (BLE, ~784 B payload)",~100 uJ,~316x
+MNEMA inferences per CR2032 coin cell,7.68 x 10^9,-
+Dense MLP inferences per CR2032 coin cell,1.37 x 10^9,-
+MNEMA average power at 1 Hz,0.316 uW,-
+Dense MLP average power at 1 Hz,1.768 uW,-

@@ -1,0 +1,7 @@
+﻿Check,Script,Result
+Instrument calibration,e0_calibrate.py,"406,528 measured vs 406,528 theoretical MACs - 0.0% discrepancy"
+Sparse code size,e3_separator_test.py,"64 of 16,384 units (0.39%)"
+Inter-class overlap,e3_separator_test.py,1 unit (theory k^2/N_S = 0.25)
+One-shot write/retrieve,e3_separator_test.py,Correct class at confidence 0.98
+Zero-MAC inference,e3_separator_test.py,"0 MACs, 237,840 integer adds"
+Eligibility isolated in inference,run_uncounted_audit.py,Does not mutate during is_training=False (verified)

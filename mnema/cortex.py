@@ -1,3 +1,10 @@
+# Copyright (c) 2026 COGNX. All Rights Reserved.
+#
+# PROPRIETARY AND CONFIDENTIAL. This file is part of MNEMA, proprietary software
+# of COGNX. It is not open source. No right to use, copy, modify, distribute, or
+# create derivative works is granted. Unauthorized use or disclosure is prohibited.
+# See the LICENSE file at the repository root for the full terms.
+
 import numpy as np
 
 class BennaFusiSynapse:
@@ -39,8 +46,15 @@ class BennaFusiSynapse:
             self.u[k+1] -= flow / self.C[k+1]
 
         if instrument is not None:
+            plane = self.in_features * self.out_features
+            # u_1 injection: one divide + one add per element.
+            # Each of the (m-1) diffusion steps: one subtract, one multiply, two divides,
+            # two accumulates per element. Multiply-class ops are charged as MACs.
+            instrument.macs += plane + (self.m - 1) * 3 * plane
+            instrument.adds += plane + (self.m - 1) * 3 * plane
             instrument.weight_updates += int(np.count_nonzero(delta_w))
-            instrument.sram_write_b += self.m * self.in_features * self.out_features * 4
+            instrument.sram_read_b += self.m * plane * 4
+            instrument.sram_write_b += self.m * plane * 4
 
 
 class SlowCortex:
@@ -74,9 +88,14 @@ class SlowCortex:
         self.b.fill(0.0)
         self.eligibility.fill(0.0)
 
-    def forward(self, active_indices: np.ndarray, instrument=None) -> np.ndarray:
+    def forward(self, active_indices: np.ndarray, instrument=None, update_eligibility: bool = True) -> np.ndarray:
         """
         Event-driven ALIF forward pass from sparse separator binary codes.
+
+        `update_eligibility` gates the trace maintenance. Credit assignment only needs
+        the trace when a learn() call will follow, and decaying it costs a dense
+        [out_dim, in_features] multiply plus a full read/write of the array. Leaving it
+        on during inference is both wasted energy and state mutation during evaluation.
         """
         # Sparse synops: slice only active input columns
         w_active = self.syn_fc.weight[:, active_indices]  # [out_dim, k]
@@ -93,14 +112,20 @@ class SlowCortex:
 
         # Update local eligibility traces: e_ij[t] = rho_e * e_ij[t-1] + psi_i * s_j
         # SuperSpike surrogate derivative: psi = 1 / (1 + |v - v_th|)^2
-        psi = 1.0 / (1.0 + np.abs(self.v - effective_th))**2
-        self.eligibility *= self.rho_e
-        self.eligibility[:, active_indices] += psi[:, None]
+        if update_eligibility:
+            psi = 1.0 / (1.0 + np.abs(self.v - effective_th))**2
+            self.eligibility *= self.rho_e
+            self.eligibility[:, active_indices] += psi[:, None]
 
         if instrument is not None:
             instrument.synops += len(active_indices) * self.out_dim
             instrument.neuron_updates += self.out_dim
             instrument.sram_read_b += len(active_indices) * self.out_dim * 4
+            if update_eligibility:
+                # Dense trace decay: one fp32 multiply per element, plus read+write.
+                instrument.macs += self.eligibility.size
+                instrument.sram_read_b += self.eligibility.nbytes
+                instrument.sram_write_b += self.eligibility.nbytes
 
         return self.v
 
@@ -114,5 +139,10 @@ class SlowCortex:
         # Broadcast third factor (error / dopamine signal L_i)
         error_signal = target_vec - self.v
         delta_w = self.eta * (error_signal[:, None] * self.eligibility)
+
+        if instrument is not None:
+            # Dense outer-product scaling over the full trace: 2 multiplies per element.
+            instrument.macs += 2 * self.eligibility.size
+            instrument.sram_read_b += self.eligibility.nbytes
 
         self.syn_fc.update(delta_w, instrument=instrument)

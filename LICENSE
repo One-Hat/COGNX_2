@@ -1,0 +1,229 @@
+COGNX PROPRIETARY SOFTWARE LICENSE
+MNEMA — Memory-Native Event-Driven Architecture
+
+Copyright (c) 2026 COGNX. All Rights Reserved.
+
+NOTICE ON OWNERSHIP: This work is developed for and on behalf of COGNX. Formal
+assignment of copyright and all related intellectual property rights from the
+individual contributors to COGNX is pending execution. Until such assignment is
+executed, the individual authors retain their respective statutory rights, and
+COGNX asserts all rights it holds by agreement, employment, or operation of law.
+Nothing in this notice grants any right to any third party.
+
+================================================================================
+1. PROPRIETARY AND CONFIDENTIAL
+================================================================================
+
+This software, together with its source code, object code, architecture,
+algorithms, benchmark results, measurement instrumentation, technology cards,
+documentation, and all associated materials (collectively, the "Software"),
+constitutes the proprietary and confidential information and trade secrets of
+COGNX.
+
+The Software is NOT open source. It is NOT free software. It is NOT public
+domain. No rights are granted by implication, estoppel, or otherwise, except as
+expressly stated in Section 2 below.
+
+================================================================================
+2. LIMITED PERMISSION TO VIEW
+================================================================================
+
+COGNX grants to a person or entity that has received the Software directly from
+COGNX, and only where COGNX has expressly authorized that disclosure (an
+"Authorized Recipient"), a personal, non-exclusive, non-transferable,
+non-sublicensable, revocable permission to VIEW and READ the Software for the
+sole purpose of evaluating COGNX, its technology, or a prospective business or
+academic relationship with COGNX.
+
+This permission:
+
+  (a) is limited to viewing and reading only;
+  (b) conveys NO license to use, execute in production, copy, reproduce, modify,
+      adapt, translate, merge, publish, distribute, sublicense, sell, lease,
+      lend, host, or otherwise exploit the Software;
+  (c) terminates automatically and immediately upon written notice from COGNX,
+      or upon conclusion of the evaluation, whichever occurs first;
+  (d) does not permit disclosure of the Software to any other party; and
+  (e) may be withdrawn by COGNX at any time, for any reason or no reason.
+
+Demonstration of the Software to an audience by COGNX, including presentation of
+its interface, outputs, benchmark results, or figures, does not grant that
+audience any right in the Software beyond observing that demonstration.
+
+================================================================================
+3. PROHIBITED ACTS
+================================================================================
+
+Except as expressly permitted in Section 2, no person or entity may, in whole or
+in part, directly or indirectly:
+
+  3.1  use, run, execute, deploy, or operate the Software for any purpose,
+       whether commercial, academic, personal, research, or evaluative;
+
+  3.2  copy, reproduce, fork, clone, mirror, archive, or store the Software,
+       including to any public or private code repository;
+
+  3.3  modify, adapt, port, translate, refactor, or create derivative works
+       based upon the Software;
+
+  3.4  distribute, publish, transmit, disclose, sublicense, sell, resell, rent,
+       lease, lend, or otherwise transfer the Software to any third party;
+
+  3.5  reverse engineer, decompile, disassemble, or otherwise attempt to derive
+       the source code, architecture, algorithms, parameters, or design of the
+       Software, except to the extent this restriction is unenforceable under
+       applicable law;
+
+  3.6  use the Software, its outputs, its architecture, or its documentation as
+       training data, reference material, or input for the development or
+       training of any machine learning model, artificial intelligence system,
+       or competing product;
+
+  3.7  publish, present, or otherwise disclose benchmark results, performance
+       measurements, energy projections, or comparative evaluations derived from
+       the Software without the prior written consent of COGNX;
+
+  3.8  remove, obscure, or alter any copyright, trademark, confidentiality, or
+       other proprietary notice contained in the Software; or
+
+  3.9  use the name "COGNX", "MNEMA", or any COGNX trademark, service mark, logo,
+       or trade name, whether registered or unregistered, for any purpose.
+
+================================================================================
+4. CONFIDENTIALITY
+================================================================================
+
+Each Authorized Recipient shall hold the Software in strict confidence, shall
+protect it with no less than the degree of care it applies to its own
+confidential information of comparable sensitivity (and in no event less than a
+reasonable degree of care), and shall not disclose it to any third party without
+the prior written consent of COGNX.
+
+These obligations do not apply to information the Authorized Recipient can
+demonstrate by written record: (a) was already lawfully known to it without
+obligation of confidence; (b) is or becomes publicly available through no act or
+omission of the Authorized Recipient; or (c) was lawfully received from a third
+party without restriction and without breach of any obligation owed to COGNX.
+
+If disclosure is compelled by law, court order, or regulatory authority, the
+Authorized Recipient shall, where legally permitted, give COGNX prompt written
+notice sufficient to allow COGNX to seek a protective order, and shall disclose
+only that portion legally required.
+
+================================================================================
+5. RESERVATION OF RIGHTS
+================================================================================
+
+All right, title, and interest in and to the Software, including all copyrights,
+patents and patent applications, trade secrets, trademarks, and all other
+intellectual property rights therein, are and shall remain the exclusive
+property of COGNX and its licensors.
+
+No patent license, whether express or implied, is granted under this License.
+No trademark license is granted under this License. Any rights not expressly
+granted in Section 2 are reserved.
+
+================================================================================
+6. NO WARRANTY
+================================================================================
+
+THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY
+KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, ACCURACY, AND
+NON-INFRINGEMENT.
+
+WITHOUT LIMITING THE FOREGOING, COGNX MAKES NO REPRESENTATION OR WARRANTY THAT
+THE SOFTWARE IS FIT FOR PRODUCTION, SAFETY-CRITICAL, MEDICAL, AUTOMOTIVE, OR
+LIFE-SUSTAINING USE. THE SOFTWARE IS A RESEARCH PROTOTYPE.
+
+ENERGY FIGURES REPORTED BY THE SOFTWARE ARE PROJECTIONS COMPUTED FROM MEASURED
+OPERATION COUNTS MULTIPLIED BY PUBLISHED THIRD-PARTY TECHNOLOGY CONSTANTS. THEY
+ARE NOT MEASUREMENTS TAKEN ON PHYSICAL HARDWARE AND MUST NOT BE RELIED UPON AS
+SUCH.
+
+================================================================================
+7. LIMITATION OF LIABILITY
+================================================================================
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL COGNX OR
+ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, PUNITIVE, OR CONSEQUENTIAL DAMAGES, OR FOR ANY LOSS OF PROFITS,
+REVENUE, DATA, GOODWILL, OR BUSINESS INTERRUPTION, HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT, ARISING IN
+ANY WAY OUT OF THE SOFTWARE OR THIS LICENSE, EVEN IF ADVISED OF THE POSSIBILITY
+OF SUCH DAMAGE.
+
+================================================================================
+8. TERMINATION
+================================================================================
+
+Any permission granted under Section 2 terminates automatically, without notice,
+upon any breach of this License. Upon termination, the recipient shall
+immediately cease all access to the Software and shall destroy or return all
+copies, extracts, notes, and derivative materials in its possession or control,
+certifying such destruction in writing if requested by COGNX.
+
+Sections 1, 3, 4, 5, 6, 7, 9, and 10 survive termination.
+
+================================================================================
+9. THIRD-PARTY COMPONENTS
+================================================================================
+
+The Software depends on third-party open-source packages, including but not
+limited to NumPy, OpenCV, Matplotlib, PyYAML, and Streamlit. Those packages are
+licensed to their respective copyright holders under their own terms, which
+continue to apply to those packages and are not superseded by this License.
+
+This License applies solely to the original work authored by COGNX and not to
+any third-party component.
+
+The MNIST dataset referenced by this Software is obtained from a third-party
+source and is subject to its own terms of use.
+
+================================================================================
+10. GENERAL
+================================================================================
+
+10.1  ENFORCEMENT. Unauthorized use or disclosure of the Software would cause
+      irreparable harm to COGNX for which monetary damages would be an
+      inadequate remedy. COGNX is entitled to seek injunctive and equitable
+      relief in addition to all other remedies available at law or in equity.
+
+10.2  SEVERABILITY. If any provision of this License is held unenforceable, that
+      provision shall be modified to the minimum extent necessary to make it
+      enforceable, and the remaining provisions shall continue in full force.
+
+10.3  NO WAIVER. No failure or delay by COGNX in exercising any right under this
+      License operates as a waiver of that right.
+
+10.4  ENTIRE AGREEMENT. This License is the entire agreement concerning the
+      Software and supersedes all prior understandings, except where superseded
+      by a separate written agreement signed by an authorized representative of
+      COGNX.
+
+10.5  AMENDMENT. This License may be amended only in a writing signed by an
+      authorized representative of COGNX.
+
+================================================================================
+11. CONTACT
+================================================================================
+
+For licensing enquiries, evaluation access, commercial terms, or permission to
+publish results derived from the Software:
+
+    COGNX
+    [ADD CONTACT EMAIL]
+    [ADD REGISTERED ADDRESS]
+
+================================================================================
+
+UNAUTHORIZED USE, COPYING, MODIFICATION, OR DISTRIBUTION OF THIS SOFTWARE IS
+STRICTLY PROHIBITED AND MAY RESULT IN CIVIL LIABILITY AND CRIMINAL PENALTIES.
+
+================================================================================
+
+DISCLAIMER: This document is a license template, not legal advice. Have counsel
+review it before you rely on it — particularly the ownership notice above, the
+governing-law position (deliberately left unstated pending your jurisdiction),
+and any inconsistency with agreements you have already signed with contributors,
+accelerators, universities, or competition organisers.

@@ -1,3 +1,10 @@
+# Copyright (c) 2026 COGNX. All Rights Reserved.
+#
+# PROPRIETARY AND CONFIDENTIAL. This file is part of MNEMA, proprietary software
+# of COGNX. It is not open source. No right to use, copy, modify, distribute, or
+# create derivative works is granted. Unauthorized use or disclosure is prohibited.
+# See the LICENSE file at the repository root for the full terms.
+
 import numpy as np
 from mnema.encoder import EventEncoder
 from mnema.separator import SparseSeparator
@@ -30,8 +37,10 @@ class MNEMA:
         # 3. [F] Fast Store Address-and-Accumulate
         y_f, conf_f = self.store.read(code, instrument=instrument)
 
-        # 4. [C] Slow Cortex ALIF forward
-        y_c = self.cortex.forward(code, instrument=instrument)
+        # 4. [C] Slow Cortex ALIF forward.
+        # The eligibility trace is only consumed by cortex.learn(), so it is maintained
+        # on the training path only. Inference leaves cortex plasticity state untouched.
+        y_c = self.cortex.forward(code, instrument=instrument, update_eligibility=is_training)
 
         # 5. [R] Arbitration between Fast & Slow systems
         pred, probs, alpha = self.readout.arbitrate(y_f, conf_f, y_c)
