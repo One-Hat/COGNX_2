@@ -1,0 +1,943 @@
+{
+  "mode": "quick",
+  "label": "DEBUG RESULTS ONLY",
+  "config_id": "a5ba3a829d8516d6f52d58350168fab2110c8c985971c0883fd3eb214e774ca9",
+  "complete": true,
+  "completed_runs": 6,
+  "expected_runs": 6,
+  "research_complete": false,
+  "methods": {
+    "Naive MLP": {
+      "final_acc": {
+        "mean": 19.400000000000002,
+        "std": null,
+        "min": 19.400000000000002,
+        "max": 19.400000000000002,
+        "n": 1
+      },
+      "forgetting": {
+        "mean": 98.25,
+        "std": null,
+        "min": 98.25,
+        "max": 98.25,
+        "n": 1
+      },
+      "retention_mean": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.07,
+          0.96,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.97,
+          0.0,
+          0.0
+        ],
+        [
+          0.02,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.97
+        ]
+      ],
+      "seen_accuracy_mean": [
+        100.0,
+        51.5,
+        32.33333333333333,
+        25.5,
+        19.400000000000002
+      ],
+      "seen_accuracy_std": null,
+      "memory": {
+        "total_resident_array_bytes": {
+          "mean": 814120.0,
+          "std": null,
+          "min": 814120.0,
+          "max": 814120.0,
+          "n": 1
+        },
+        "model_adaptive_bytes": {
+          "mean": 814120.0,
+          "std": null,
+          "min": 814120.0,
+          "max": 814120.0,
+          "n": 1
+        },
+        "fixed_scaffold_bytes": {
+          "mean": 0.0,
+          "std": null,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 1
+        },
+        "auxiliary_allocated_bytes": {
+          "mean": 0.0,
+          "std": null,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 1
+        },
+        "auxiliary_content_bytes": {
+          "mean": 0.0,
+          "std": null,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 1
+        }
+      },
+      "wall_time_s": {
+        "mean": 1.7059699999954319,
+        "std": null,
+        "min": 1.7059699999954319,
+        "max": 1.7059699999954319,
+        "n": 1
+      },
+      "inference_projected_uj_per_sample": {
+        "mean": 1.7683967999999997,
+        "std": null,
+        "min": 1.7683967999999997,
+        "max": 1.7683967999999997,
+        "n": 1
+      }
+    },
+    "Replay-300 (Research)": {
+      "final_acc": {
+        "mean": 65.4,
+        "std": null,
+        "min": 65.4,
+        "max": 65.4,
+        "n": 1
+      },
+      "forgetting": {
+        "mean": 37.5,
+        "std": null,
+        "min": 37.5,
+        "max": 37.5,
+        "n": 1
+      },
+      "retention_mean": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.98,
+          0.94,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.85,
+          0.5,
+          0.95,
+          0.0,
+          0.0
+        ],
+        [
+          0.97,
+          0.71,
+          0.5,
+          0.98,
+          0.0
+        ],
+        [
+          0.9,
+          0.58,
+          0.5,
+          0.39,
+          0.9
+        ]
+      ],
+      "seen_accuracy_mean": [
+        100.0,
+        96.0,
+        76.66666666666666,
+        78.99999999999999,
+        65.4
+      ],
+      "seen_accuracy_std": null,
+      "memory": {
+        "total_resident_array_bytes": {
+          "mean": 1049636.0,
+          "std": null,
+          "min": 1049636.0,
+          "max": 1049636.0,
+          "n": 1
+        },
+        "model_adaptive_bytes": {
+          "mean": 814120.0,
+          "std": null,
+          "min": 814120.0,
+          "max": 814120.0,
+          "n": 1
+        },
+        "fixed_scaffold_bytes": {
+          "mean": 0.0,
+          "std": null,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 1
+        },
+        "auxiliary_allocated_bytes": {
+          "mean": 235516.0,
+          "std": null,
+          "min": 235516.0,
+          "max": 235516.0,
+          "n": 1
+        },
+        "auxiliary_content_bytes": {
+          "mean": 235516.0,
+          "std": null,
+          "min": 235516.0,
+          "max": 235516.0,
+          "n": 1
+        },
+        "replay_items": {
+          "mean": 300.0,
+          "std": null,
+          "min": 300.0,
+          "max": 300.0,
+          "n": 1
+        },
+        "replay_capacity": {
+          "mean": 300.0,
+          "std": null,
+          "min": 300.0,
+          "max": 300.0,
+          "n": 1
+        },
+        "image_bytes": {
+          "mean": 235200.0,
+          "std": null,
+          "min": 235200.0,
+          "max": 235200.0,
+          "n": 1
+        },
+        "label_bytes": {
+          "mean": 300.0,
+          "std": null,
+          "min": 300.0,
+          "max": 300.0,
+          "n": 1
+        },
+        "logit_bytes": {
+          "mean": 0.0,
+          "std": null,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 1
+        },
+        "buffer_metadata_bytes": {
+          "mean": 16.0,
+          "std": null,
+          "min": 16.0,
+          "max": 16.0,
+          "n": 1
+        },
+        "buffer_bytes": {
+          "mean": 235516.0,
+          "std": null,
+          "min": 235516.0,
+          "max": 235516.0,
+          "n": 1
+        },
+        "populated_buffer_bytes": {
+          "mean": 235516.0,
+          "std": null,
+          "min": 235516.0,
+          "max": 235516.0,
+          "n": 1
+        }
+      },
+      "wall_time_s": {
+        "mean": 2.0209759999997914,
+        "std": null,
+        "min": 2.0209759999997914,
+        "max": 2.0209759999997914,
+        "n": 1
+      },
+      "inference_projected_uj_per_sample": {
+        "mean": 1.7683967999999997,
+        "std": null,
+        "min": 1.7683967999999997,
+        "max": 1.7683967999999997,
+        "n": 1
+      }
+    },
+    "Replay-64KiB": {
+      "final_acc": {
+        "mean": 67.0,
+        "std": null,
+        "min": 67.0,
+        "max": 67.0,
+        "n": 1
+      },
+      "forgetting": {
+        "mean": 35.0,
+        "std": null,
+        "min": 35.0,
+        "max": 35.0,
+        "n": 1
+      },
+      "retention_mean": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.97,
+          0.92,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.89,
+          0.59,
+          0.93,
+          0.0,
+          0.0
+        ],
+        [
+          0.97,
+          0.64,
+          0.65,
+          0.97,
+          0.0
+        ],
+        [
+          0.91,
+          0.57,
+          0.58,
+          0.36,
+          0.93
+        ]
+      ],
+      "seen_accuracy_mean": [
+        100.0,
+        94.5,
+        80.33333333333333,
+        80.74999999999999,
+        67.0
+      ],
+      "seen_accuracy_std": null,
+      "memory": {
+        "total_resident_array_bytes": {
+          "mean": 879291.0,
+          "std": null,
+          "min": 879291.0,
+          "max": 879291.0,
+          "n": 1
+        },
+        "model_adaptive_bytes": {
+          "mean": 814120.0,
+          "std": null,
+          "min": 814120.0,
+          "max": 814120.0,
+          "n": 1
+        },
+        "fixed_scaffold_bytes": {
+          "mean": 0.0,
+          "std": null,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 1
+        },
+        "auxiliary_allocated_bytes": {
+          "mean": 65171.0,
+          "std": null,
+          "min": 65171.0,
+          "max": 65171.0,
+          "n": 1
+        },
+        "auxiliary_content_bytes": {
+          "mean": 65171.0,
+          "std": null,
+          "min": 65171.0,
+          "max": 65171.0,
+          "n": 1
+        },
+        "replay_items": {
+          "mean": 83.0,
+          "std": null,
+          "min": 83.0,
+          "max": 83.0,
+          "n": 1
+        },
+        "replay_capacity": {
+          "mean": 83.0,
+          "std": null,
+          "min": 83.0,
+          "max": 83.0,
+          "n": 1
+        },
+        "image_bytes": {
+          "mean": 65072.0,
+          "std": null,
+          "min": 65072.0,
+          "max": 65072.0,
+          "n": 1
+        },
+        "label_bytes": {
+          "mean": 83.0,
+          "std": null,
+          "min": 83.0,
+          "max": 83.0,
+          "n": 1
+        },
+        "logit_bytes": {
+          "mean": 0.0,
+          "std": null,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 1
+        },
+        "buffer_metadata_bytes": {
+          "mean": 16.0,
+          "std": null,
+          "min": 16.0,
+          "max": 16.0,
+          "n": 1
+        },
+        "buffer_bytes": {
+          "mean": 65171.0,
+          "std": null,
+          "min": 65171.0,
+          "max": 65171.0,
+          "n": 1
+        },
+        "populated_buffer_bytes": {
+          "mean": 65171.0,
+          "std": null,
+          "min": 65171.0,
+          "max": 65171.0,
+          "n": 1
+        }
+      },
+      "wall_time_s": {
+        "mean": 1.266227500003879,
+        "std": null,
+        "min": 1.266227500003879,
+        "max": 1.266227500003879,
+        "n": 1
+      },
+      "inference_projected_uj_per_sample": {
+        "mean": 1.7683967999999997,
+        "std": null,
+        "min": 1.7683967999999997,
+        "max": 1.7683967999999997,
+        "n": 1
+      }
+    },
+    "EWC": {
+      "final_acc": {
+        "mean": 19.6,
+        "std": null,
+        "min": 19.6,
+        "max": 19.6,
+        "n": 1
+      },
+      "forgetting": {
+        "mean": 98.0,
+        "std": null,
+        "min": 98.0,
+        "max": 98.0,
+        "n": 1
+      },
+      "retention_mean": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.1,
+          0.96,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.97,
+          0.0,
+          0.0
+        ],
+        [
+          0.02,
+          0.0,
+          0.04,
+          1.0,
+          0.0
+        ],
+        [
+          0.01,
+          0.0,
+          0.0,
+          0.0,
+          0.97
+        ]
+      ],
+      "seen_accuracy_mean": [
+        100.0,
+        53.0,
+        32.33333333333333,
+        26.5,
+        19.6
+      ],
+      "seen_accuracy_std": null,
+      "memory": {
+        "total_resident_array_bytes": {
+          "mean": 7327080.0,
+          "std": null,
+          "min": 7327080.0,
+          "max": 7327080.0,
+          "n": 1
+        },
+        "model_adaptive_bytes": {
+          "mean": 814120.0,
+          "std": null,
+          "min": 814120.0,
+          "max": 814120.0,
+          "n": 1
+        },
+        "fixed_scaffold_bytes": {
+          "mean": 0.0,
+          "std": null,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 1
+        },
+        "auxiliary_allocated_bytes": {
+          "mean": 6512960.0,
+          "std": null,
+          "min": 6512960.0,
+          "max": 6512960.0,
+          "n": 1
+        },
+        "auxiliary_content_bytes": {
+          "mean": 6512960.0,
+          "std": null,
+          "min": 6512960.0,
+          "max": 6512960.0,
+          "n": 1
+        },
+        "fisher_bytes": {
+          "mean": 3256480.0,
+          "std": null,
+          "min": 3256480.0,
+          "max": 3256480.0,
+          "n": 1
+        },
+        "parameter_snapshot_bytes": {
+          "mean": 3256480.0,
+          "std": null,
+          "min": 3256480.0,
+          "max": 3256480.0,
+          "n": 1
+        },
+        "other_cl_array_bytes": {
+          "mean": 0.0,
+          "std": null,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 1
+        }
+      },
+      "wall_time_s": {
+        "mean": 6.390145199999097,
+        "std": null,
+        "min": 6.390145199999097,
+        "max": 6.390145199999097,
+        "n": 1
+      },
+      "inference_projected_uj_per_sample": {
+        "mean": 1.7683967999999997,
+        "std": null,
+        "min": 1.7683967999999997,
+        "max": 1.7683967999999997,
+        "n": 1
+      }
+    },
+    "DER++-300": {
+      "final_acc": {
+        "mean": 72.0,
+        "std": null,
+        "min": 72.0,
+        "max": 72.0,
+        "n": 1
+      },
+      "forgetting": {
+        "mean": 26.75,
+        "std": null,
+        "min": 26.75,
+        "max": 26.75,
+        "n": 1
+      },
+      "retention_mean": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.96,
+          0.96,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.91,
+          0.6,
+          0.9,
+          0.0,
+          0.0
+        ],
+        [
+          0.95,
+          0.78,
+          0.67,
+          0.99,
+          0.0
+        ],
+        [
+          0.97,
+          0.75,
+          0.49,
+          0.57,
+          0.82
+        ]
+      ],
+      "seen_accuracy_mean": [
+        100.0,
+        96.0,
+        80.33333333333333,
+        84.74999999999999,
+        72.0
+      ],
+      "seen_accuracy_std": null,
+      "memory": {
+        "total_resident_array_bytes": {
+          "mean": 1061636.0,
+          "std": null,
+          "min": 1061636.0,
+          "max": 1061636.0,
+          "n": 1
+        },
+        "model_adaptive_bytes": {
+          "mean": 814120.0,
+          "std": null,
+          "min": 814120.0,
+          "max": 814120.0,
+          "n": 1
+        },
+        "fixed_scaffold_bytes": {
+          "mean": 0.0,
+          "std": null,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 1
+        },
+        "auxiliary_allocated_bytes": {
+          "mean": 247516.0,
+          "std": null,
+          "min": 247516.0,
+          "max": 247516.0,
+          "n": 1
+        },
+        "auxiliary_content_bytes": {
+          "mean": 247516.0,
+          "std": null,
+          "min": 247516.0,
+          "max": 247516.0,
+          "n": 1
+        },
+        "replay_items": {
+          "mean": 300.0,
+          "std": null,
+          "min": 300.0,
+          "max": 300.0,
+          "n": 1
+        },
+        "replay_capacity": {
+          "mean": 300.0,
+          "std": null,
+          "min": 300.0,
+          "max": 300.0,
+          "n": 1
+        },
+        "image_bytes": {
+          "mean": 235200.0,
+          "std": null,
+          "min": 235200.0,
+          "max": 235200.0,
+          "n": 1
+        },
+        "label_bytes": {
+          "mean": 300.0,
+          "std": null,
+          "min": 300.0,
+          "max": 300.0,
+          "n": 1
+        },
+        "logit_bytes": {
+          "mean": 12000.0,
+          "std": null,
+          "min": 12000.0,
+          "max": 12000.0,
+          "n": 1
+        },
+        "buffer_metadata_bytes": {
+          "mean": 16.0,
+          "std": null,
+          "min": 16.0,
+          "max": 16.0,
+          "n": 1
+        },
+        "buffer_bytes": {
+          "mean": 247516.0,
+          "std": null,
+          "min": 247516.0,
+          "max": 247516.0,
+          "n": 1
+        },
+        "populated_buffer_bytes": {
+          "mean": 247516.0,
+          "std": null,
+          "min": 247516.0,
+          "max": 247516.0,
+          "n": 1
+        }
+      },
+      "wall_time_s": {
+        "mean": 3.637988899994525,
+        "std": null,
+        "min": 3.637988899994525,
+        "max": 3.637988899994525,
+        "n": 1
+      },
+      "inference_projected_uj_per_sample": {
+        "mean": 1.7683967999999997,
+        "std": null,
+        "min": 1.7683967999999997,
+        "max": 1.7683967999999997,
+        "n": 1
+      }
+    },
+    "MNEMA": {
+      "final_acc": {
+        "mean": 71.2,
+        "std": null,
+        "min": 71.2,
+        "max": 71.2,
+        "n": 1
+      },
+      "forgetting": {
+        "mean": 24.25,
+        "std": null,
+        "min": 24.25,
+        "max": 24.25,
+        "n": 1
+      },
+      "retention_mean": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.9,
+          0.97,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.74,
+          0.81,
+          0.91,
+          0.0,
+          0.0
+        ],
+        [
+          0.72,
+          0.81,
+          0.84,
+          0.9,
+          0.0
+        ],
+        [
+          0.68,
+          0.74,
+          0.6,
+          0.79,
+          0.75
+        ]
+      ],
+      "seen_accuracy_mean": [
+        100.0,
+        93.5,
+        82.0,
+        81.75,
+        71.2
+      ],
+      "seen_accuracy_std": null,
+      "memory": {
+        "total_resident_array_bytes": {
+          "mean": 4391100.0,
+          "std": null,
+          "min": 4391100.0,
+          "max": 4391100.0,
+          "n": 1
+        },
+        "active_rows": {
+          "mean": 2621.0,
+          "std": null,
+          "min": 2621.0,
+          "max": 2621.0,
+          "n": 1
+        },
+        "configured_budget_bytes": {
+          "mean": 65536.0,
+          "std": null,
+          "min": 65536.0,
+          "max": 65536.0,
+          "n": 1
+        },
+        "implementation_row_bytes": {
+          "mean": 25.0,
+          "std": null,
+          "min": 25.0,
+          "max": 25.0,
+          "n": 1
+        },
+        "actual_row_bytes": {
+          "mean": 28.0,
+          "std": null,
+          "min": 28.0,
+          "max": 28.0,
+          "n": 1
+        },
+        "implementation_occupancy_bytes": {
+          "mean": 65525.0,
+          "std": null,
+          "min": 65525.0,
+          "max": 65525.0,
+          "n": 1
+        },
+        "actual_active_payload_bytes": {
+          "mean": 73388.0,
+          "std": null,
+          "min": 73388.0,
+          "max": 73388.0,
+          "n": 1
+        },
+        "allocated_faststore_bytes": {
+          "mean": 458752.0,
+          "std": null,
+          "min": 458752.0,
+          "max": 458752.0,
+          "n": 1
+        },
+        "model_adaptive_bytes": {
+          "mean": 3408032.0,
+          "std": null,
+          "min": 3408032.0,
+          "max": 3408032.0,
+          "n": 1
+        },
+        "fixed_scaffold_bytes": {
+          "mean": 524316.0,
+          "std": null,
+          "min": 524316.0,
+          "max": 524316.0,
+          "n": 1
+        },
+        "cortex_synaptic_adaptive_bytes": {
+          "mean": 3276960.0,
+          "std": null,
+          "min": 3276960.0,
+          "max": 3276960.0,
+          "n": 1
+        },
+        "other_adaptive_array_bytes": {
+          "mean": 131072.0,
+          "std": null,
+          "min": 131072.0,
+          "max": 131072.0,
+          "n": 1
+        },
+        "auxiliary_allocated_bytes": {
+          "mean": 458752.0,
+          "std": null,
+          "min": 458752.0,
+          "max": 458752.0,
+          "n": 1
+        },
+        "auxiliary_content_bytes": {
+          "mean": 73388.0,
+          "std": null,
+          "min": 73388.0,
+          "max": 73388.0,
+          "n": 1
+        }
+      },
+      "wall_time_s": {
+        "mean": 18.865082699994673,
+        "std": null,
+        "min": 18.865082699994673,
+        "max": 18.865082699994673,
+        "n": 1
+      },
+      "inference_projected_uj_per_sample": {
+        "mean": 0.315666407,
+        "std": null,
+        "min": 0.315666407,
+        "max": 0.315666407,
+        "n": 1
+      },
+      "faststore_peak_payload_bytes": {
+        "mean": 73388.0,
+        "std": null,
+        "min": 73388.0,
+        "max": 73388.0,
+        "n": 1
+      },
+      "faststore_over_budget_observations": 370
+    }
+  }
+}
