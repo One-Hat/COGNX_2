@@ -39,6 +39,9 @@ def generate_report(directory):
     if len(config["seeds"]) == 1:
         banner += "\n\n† One seed: standard deviation is undefined; values are single-seed observations."
     hp = config["hyperparameters"]
+    execution = ("Independent method/seed jobs on GitHub Actions; training within each job is sequential. "
+                 "The configuration records the preparation host; per-job host metadata is in workers/."
+                 if (directory / "workers").exists() else "Sequential methods/seeds on one host.")
     table = main_table(summary)
     sizes = "\n".join(f"| {''.join(map(str,s['classes']))} | {s['train']:,} | {s['test']:,} | {s['full_train']:,} | {s['full_test']:,} |" for s in config["task_sizes"])
     best_acc = max(methods, key=lambda m: methods[m]["final_acc"]["mean"])
@@ -87,7 +90,7 @@ MNIST handwritten digits, fixed task order 01 → 23 → 45 → 67 → 89. Each 
 |---|---:|---:|---:|---:|
 {sizes}
 
-Seeds: {config['seeds']}. Run mode: **{config['mode']}**. Created: {config['created_utc']}. Git commit: `{config['git_commit']}`. Exact source hashes, dataset checksums and settings: [config.json](config.json). Software: `{config['software']}`. NumPy/CPU, one BLAS thread, sequential methods/seeds; no GPU or neuromorphic device assumed. Images remain uint8 in host memory and are normalized to float32 /255 per use.
+Seeds: {config['seeds']}. Run mode: **{config['mode']}**. Created: {config['created_utc']}. Git commit: `{config['git_commit']}`. Exact source hashes, dataset checksums and settings: [config.json](config.json). Software: `{config['software']}`. NumPy/CPU, one BLAS thread; no GPU or neuromorphic device assumed. {execution} Images remain uint8 in host memory and are normalized to float32 /255 per use.
 
 The unit of statistical replication is the seed. Tables use sample standard deviation (ddof=1); SD is undefined for one seed, so quick figures omit error bars. Source/environment/configuration mismatches refuse resume; valid completed seed–method pairs are skipped. No statistical significance or tuned-best-method claim is made.
 

@@ -30,6 +30,40 @@ Memory columns are array payload; total = adaptive + fixed + allocated auxiliary
 
 <!-- RESEARCH_BENCHMARK_END -->
 
+### Run the full research benchmark on GitHub Actions
+
+Open [Actions → Research benchmark](https://github.com/ujandey/COGNX_2/actions/workflows/research-benchmark.yml),
+select **Run workflow**, and choose **full**. Manual dispatch is available once
+the workflow is on the default branch. Pushing the dedicated
+`research-benchmark-run` branch also starts a full run; ordinary pushes to `main`
+do not run this expensive experiment. The **quick** option checks the pipeline
+with reduced data and one seed and is not research evidence.
+
+The workflow runs all six methods on seeds 0–9 as **60 independent CPU jobs**, with
+up to ten running concurrently. Each job uses the full training/test data, the
+original hyperparameters, Python 3.11.7 and the pinned
+`experiments/research_requirements.txt` environment. Training within each run
+remains sequential. Preparation shares verified MNIST files, one configuration
+and exact per-seed sample orders with every worker. Each worker records its host
+information under `workers/`; the configuration's host information describes
+the preparation job. No local training or GPU is required.
+
+After every job succeeds, the report job checks all 60 result digests, data orders,
+predictions and metrics, then generates plots, tables and the final report. Download
+the **research-benchmark-full** artifact at the bottom of the workflow run page.
+It includes `BENCHMARK_REPORT.md`, `full_results.json`, `validation.json`, raw
+results, sample indices, summaries and plots. The Actions summary also shows the
+main results table. Artifacts are retained for 30 days; download them before expiry.
+Results are not automatically committed to the repository.
+
+If a job fails, choose **Re-run failed jobs** in the same workflow run. Successful
+method/seed artifacts remain available and are reused by the report job; an
+interrupted method/seed starts over. Starting a new workflow run repeats the whole
+experiment. A job has a six-hour ceiling, so a pair that exceeds it will need a
+different runner or checkpointing before retrying. GitHub's account concurrency
+and usage limits still apply; see [Actions limits](https://docs.github.com/en/actions/reference/limits)
+and [Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions).
+
 > **A biologically grounded, event-driven continual learning framework that bounds memory growth, eliminates dense backbone pre-training energy, and operates via sparse address-and-accumulate synaptic dynamics.**
 
 > ⚠️ **PROPRIETARY AND CONFIDENTIAL — COPYRIGHT © 2026 COGNX. ALL RIGHTS RESERVED.**

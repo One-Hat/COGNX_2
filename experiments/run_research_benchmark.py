@@ -183,9 +183,8 @@ def parse_args(argv=None):
     return args
 
 
-def main(argv=None):
-    args = parse_args(argv)
-    data = load_dataset(ROOT / "data")
+def build_config(args, data):
+    """Build the same scientific configuration for local and distributed runs."""
     _, _, sizes = task_indices(data, 0, args.mode == "quick", args.quick_train, args.quick_test)
     for item in sizes:
         label = "".join(map(str, item["classes"]))
@@ -222,6 +221,13 @@ def main(argv=None):
         config["git_commit"] = git.stdout.strip() if git.returncode == 0 else None
     except FileNotFoundError:
         config["git_commit"] = None
+    return config
+
+
+def main(argv=None):
+    args = parse_args(argv)
+    data = load_dataset(ROOT / "data")
+    config = build_config(args, data)
     output = ROOT / "results/research_benchmark" / args.mode
     config_path = output / "config.json"
     if args.force and output.exists():
@@ -260,6 +266,11 @@ def main(argv=None):
                 atomic_json(path, result)
             results.append(result)
             atomic_json(output / "summaries/summary.json", aggregate(config, results))
+    finish_run(output, config, results)
+
+
+def finish_run(output, config, results):
+    """Write the standard report bundle after every expected pair is available."""
     atomic_json(output / "raw/per_seed_results.json", results)
     atomic_json(output / "full_results.json", {"config": config, "runs": results})
     summary = aggregate(config, results)
@@ -268,7 +279,7 @@ def main(argv=None):
     from experiments.report_research_benchmark import generate_report
     generate_plots(output)
     generate_report(output)
-    atomic_json(output / "status.json", {"status": "complete", "mode": args.mode,
+    atomic_json(output / "status.json", {"status": "complete", "mode": config["mode"],
                                        "research_complete": summary["research_complete"], "config_id": config["config_id"]})
     print(f"{config['label']}: finished. Outputs: {output}", flush=True)
 
