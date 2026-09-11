@@ -1,0 +1,20 @@
+{
+  "mode": "quick",
+  "unit_tests_passed": 12,
+  "resume_skipped_valid_pairs": 6,
+  "raw_pair_and_index_files_unchanged_on_resume": true,
+  "protected_tracked_files_unchanged": true,
+  "mnema_architecture_modified": false,
+  "full_mode_executed": false,
+  "full_directory_exists": false,
+  "quick_only_force_archive_tested": true,
+  "raw_file_sha256": {
+    "seed_0_derpp300.json": "7f1259314909a5b39eab217ad8e932f20e732d43ce465539c09538481d9e56d8",
+    "seed_0_ewc.json": "06647285e3e3d61dd459f4b4b28fc12297ce3eaac9e106e523e80b3a2e6d02b4",
+    "seed_0_indices.json": "1a27c9fcb54c9e9f821f379e8d12324f0ae0957bf73545342d3f3a7760a646b1",
+    "seed_0_mnema.json": "f58b35bbe31796ce722033bbd24a5b1f773a9e5a1a883d03cccc3a0a357bfe89",
+    "seed_0_naive.json": "8964f4a32647103121d77e0663d11552007691454b561008f6e6ff19ef10c6d0",
+    "seed_0_replay300.json": "4e026130385a41622281c675c24b637d42b5d379841e621d61756e270c7cf893",
+    "seed_0_replay64kib.json": "a01f30a10f2a0ede18acaac7f95eb9c942fa4727b8c381b2631da6a7986b33be"
+  }
+}

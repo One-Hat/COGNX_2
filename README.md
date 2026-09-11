@@ -1,5 +1,69 @@
 # MNEMA: Memory-Native Event-Driven Architecture for Edge Continual Learning
 
+<!-- RESEARCH_BENCHMARK_START -->
+## Research Benchmark
+
+**DEBUG RESULTS ONLY — reduced data, not research evidence. The full ten-seed experiment has NOT been completed by this quick run.**
+
+† One seed: standard deviation is undefined; values are single-seed observations.
+
+Full Split-MNIST, five sequential digit pairs, one external training pass, ten-class inference without task IDs; default full seeds 0–9. Methods: Naive MLP, reservoir Replay-300 (Research), Replay-64KiB, EWC, DER++-300 and frozen MNEMA.
+
+Run on a stronger machine: `python experiments/run_research_benchmark.py --mode full --seeds 10`. Resume with the same command; add `--force` to archive and rerun. Development: `python experiments/run_research_benchmark.py --quick`.
+
+| Method | Final ACC (%) | Forgetting (pp) | Model/adaptive (B) | Fixed scaffold (B) | Auxiliary content (B) | Auxiliary allocated (B) | Total resident arrays (B) | Native projected inference (µJ/image) |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Naive MLP | 19.40† | 98.25† | 814120† | 0† | 0† | 0† | 814120† | 1.768† |
+| Replay-300 (Research) | 65.40† | 37.50† | 814120† | 0† | 235516† | 235516† | 1049636† | 1.768† |
+| Replay-64KiB | 67.00† | 35.00† | 814120† | 0† | 65171† | 65171† | 879291† | 1.768† |
+| EWC | 19.60† | 98.00† | 814120† | 0† | 6512960† | 6512960† | 7327080† | 1.768† |
+| DER++-300 | 72.00† | 26.75† | 814120† | 0† | 247516† | 247516† | 1061636† | 1.768† |
+| MNEMA | 71.20† | 24.25† | 3408032† | 524316† | 73388† | 458752† | 4391100† | 0.316† |
+
+Memory columns are array payload; total = adaptive + fixed + allocated auxiliary. Native inference energy is an incomplete projection, not measured energy. MNEMA's configured 64 KiB limit is not an actual payload ceiling (25 bytes counted versus 28 bytes per active row). Stateless checkpoint evaluation is enforced per image. These results are not comparable directly with historical small-benchmark numbers.
+
+[Detailed report](results/research_benchmark/quick/BENCHMARK_REPORT.md) · [Generated summary](results/research_benchmark/quick/summaries/summary.json)
+
+![Accuracy](results/research_benchmark/quick/plots/final_accuracy.png)
+![Memory trade-off](results/research_benchmark/quick/plots/accuracy_vs_memory.png)
+![Retention](results/research_benchmark/quick/plots/retention_matrices.png)
+
+<!-- RESEARCH_BENCHMARK_END -->
+
+### Run the full research benchmark on GitHub Actions
+
+Open [Actions → Research benchmark](https://github.com/ujandey/COGNX_2/actions/workflows/research-benchmark.yml),
+select **Run workflow**, and choose **full**. Manual dispatch is available once
+the workflow is on the default branch. Pushing the dedicated
+`research-benchmark-run` branch also starts a full run; ordinary pushes to `main`
+do not run this expensive experiment. The **quick** option checks the pipeline
+with reduced data and one seed and is not research evidence.
+
+The workflow runs all six methods on seeds 0–9 as **60 independent CPU jobs**, with
+up to ten running concurrently. Each job uses the full training/test data, the
+original hyperparameters, Python 3.11.7 and the pinned
+`experiments/research_requirements.txt` environment. Training within each run
+remains sequential. Preparation shares verified MNIST files, one configuration
+and exact per-seed sample orders with every worker. Each worker records its host
+information under `workers/`; the configuration's host information describes
+the preparation job. No local training or GPU is required.
+
+After every job succeeds, the report job checks all 60 result digests, data orders,
+predictions and metrics, then generates plots, tables and the final report. Download
+the **research-benchmark-full** artifact at the bottom of the workflow run page.
+It includes `BENCHMARK_REPORT.md`, `full_results.json`, `validation.json`, raw
+results, sample indices, summaries and plots. The Actions summary also shows the
+main results table. Artifacts are retained for 30 days; download them before expiry.
+Results are not automatically committed to the repository.
+
+If a job fails, choose **Re-run failed jobs** in the same workflow run. Successful
+method/seed artifacts remain available and are reused by the report job; an
+interrupted method/seed starts over. Starting a new workflow run repeats the whole
+experiment. A job has a six-hour ceiling, so a pair that exceeds it will need a
+different runner or checkpointing before retrying. GitHub's account concurrency
+and usage limits still apply; see [Actions limits](https://docs.github.com/en/actions/reference/limits)
+and [Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions).
+
 > **A biologically grounded, event-driven continual learning framework that bounds memory growth, eliminates dense backbone pre-training energy, and operates via sparse address-and-accumulate synaptic dynamics.**
 
 > ⚠️ **PROPRIETARY AND CONFIDENTIAL — COPYRIGHT © 2026 COGNX. ALL RIGHTS RESERVED.**
@@ -14,28 +78,31 @@
 
 1. **Plasticity in the Representation:** No frozen GPU backbones. Front-end converts raw streams into temporal contrast / TTFS spike rasters ($[E]$).
 2. **Sparse Orthogonalization ($[S]$):** Random sparse expansion ($N_{\text{in}} \rightarrow N_S = 16,384, c=8$) with $k$-WTA ($k=64$). Expected inter-class code collision is $\approx \frac{k^2}{N_S} = 0.25$ units, eliminating catastrophic interference by construction.
-3. **Bounded Associative Store ($[F]$):** Pure address-and-accumulate inference (0 dense MACs). Fixed memory ceiling $B$ with salience-based lazy decay and eviction.
+3. **Associative Store ($[F]$):** Address-and-accumulate inference with a configured occupancy budget $B$ and salience-based eviction. The current byte accounting undercounts actual payload; see the research benchmark caveats.
 4. **Metaplastic Slow Cortex ($[C]$):** Adaptive Leaky Integrate-and-Fire (ALIF) network paired with 4-variable ($m=4$) Benna–Fusi complex synapses, yielding power-law memory retention ($\sim \sqrt{t}$).
 5. **Sparse-Code Sleep Replay ($[Z]$):** Replays stored 112-byte sparse indices directly into Cortex without re-running the front-end encoder, recycling fast-store capacity upon consolidation.
 6. **Audited Energy Instrument ($[X]$):** Every operation is intercepted and logged into real hardware op-counts, then projected against published technology cards (Intel Loihi 2, 45nm ASIC, 28nm ODIN).
 
 ---
 
-## 📊 Class-Incremental Benchmark (Split-MNIST 5-Task)
+## 📊 Historical Small Benchmark (Split-MNIST 5-Task)
 
-Measured, not targeted. Reproduce with `uv run python main.py --benchmark` (seed 0).
+Historical debugging experiment: **80 training / 50 test examples per task**, seed 0.
+Its evaluation allowed test inputs to alter MNEMA state. These results are preserved
+for historical context and are not full-data research results. Reproduce with
+`uv run python main.py --benchmark` (this overwrites the historical output).
 Source of truth: `results/benchmark_results.json`.
 
 | Architecture | Final Acc ($\text{ACC}$) | Forgetting ($\text{FM}$) | Dense MACs | Sparse SynOps | Projected Energy ($45\text{nm}$ ASIC) | Learned-Memory Growth |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **MLP (Naive Backprop)** | 19.2% | 92.0% | 315.1M | 0 | 2,334 µJ | Bounded (Dense) |
 | **MLP (+ Replay Buffer)** | **62.8%** | 32.0% | 477.7M | 0 | 3,343 µJ | Linear $O(N)$ — 919 KB buffer |
-| **MNEMA (This Work)** | 57.6% | **23.0%** | 1,624.6M | 741.8k | 10,347 µJ | **Strictly Flat ($B$ = 64 KB)** |
+| **MNEMA (Historical)** | 57.6% | **23.0%** | 1,624.6M | 741.8k | 10,347 µJ | Configured 64 KiB; actual payload undercounted |
 
 Over 10 seeds: Naive `19.0 ± 0.6%`, Replay `63.1 ± 3.5%`, MNEMA `56.2 ± 4.6%`
 (`uv run python experiments/run_variance.py 10`).
 
-### Where MNEMA wins, and where it does not
+### Historical observations (not full research conclusions)
 
 MNEMA's advantage is on the **inference path**, and it is architectural:
 
@@ -46,23 +113,26 @@ MNEMA's advantage is on the **inference path**, and it is architectural:
 | Projected energy (45nm) | **0.316 µJ** | 1.768 µJ (**5.59×**) |
 | Accuracy per µJ | **182.0** | 35.5 |
 
-MNEMA also achieves the **lowest forgetting** of the three systems and holds its learned content
-under a **hard 64 KB cap** that does not grow with task count, retaining no invertible raw data.
+MNEMA had the lowest forgetting in this historical three-method experiment.
+Its configured FastStore budget is 64 KiB, but the implementation counts 25 bytes
+per occupied row where the actual NumPy row payload is 28 bytes. Cortex and other
+adaptive state are additional memory. The implementation does not store raw-image replay.
 
 MNEMA is currently **behind** on three axes, and the repository measures all of them:
 
 - **Accuracy:** replay beats MNEMA by ~6 points; the gap exceeds the error bars.
 - **Training energy:** the Benna–Fusi cortex update costs ~1.64M dense MACs per step, making
-  the full benchmark ~3× more expensive than replay. See *Honest energy accounting* below.
-- **Total resident memory:** 4,288 KB vs 1,589 KB (naive) / 2,508 KB (replay). The 64 KB bound
-  applies to *learned content*, not the fixed scaffold.
+  the historical small benchmark ~3× more expensive than replay under its projection.
+- **Historical memory estimates:** superseded for research comparisons by direct array
+  inventories in the new report. The 64 KiB configuration applies only to FastStore's
+  undercounted occupancy; MNEMA also contains substantial trainable/adaptive state.
 
 ### Honest energy accounting
 
 The `[X]` instrument charges every operation, **including MNEMA's own dense paths**. An earlier
 revision left the cortex eligibility-trace decay (163,840 fp32 multiplies per forward) and the
 Benna–Fusi diffusion (~1.64M multiplies per update) uncounted, understating projected energy by
-~26× on the full benchmark. Both are now instrumented, and the eligibility trace is gated behind
+~26× on the historical small benchmark. Both are now instrumented, and the eligibility trace is gated behind
 `is_training` so inference neither pays for it nor mutates plasticity state.
 
 Verify with `uv run python experiments/run_uncounted_audit.py`.
@@ -110,7 +180,7 @@ Each writes a JSON artifact into `results/`.
 | Claim | Status |
 | :--- | :--- |
 | Zero dense MACs on the **inference** path | ✅ Architectural, instrument-verified |
-| Bounded **learned-content** memory (64 KB) | ✅ Hard cap with salience eviction |
+| Configured FastStore budget (64 KiB) | Actual active payload is undercounted; not a true 64 KiB ceiling |
 | Lowest forgetting vs both baselines | ✅ At seed 0; error bars overlap at n=10 |
 | Sparse orthogonal codes | ✅ Measured: 2.00 inter-class overlap of k=64 |
 | Runs on neuromorphic hardware | ❌ NumPy/CPU; energy is **projected**, not measured |

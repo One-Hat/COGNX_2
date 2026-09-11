@@ -1,0 +1,46 @@
+{
+  "mode": "quick",
+  "config_id": "a5ba3a829d8516d6f52d58350168fab2110c8c985971c0883fd3eb214e774ca9",
+  "full_run_executed_by_validator": false,
+  "checks": [
+    {
+      "seed": 0,
+      "method": "Naive MLP",
+      "saved_artifacts_valid": true
+    },
+    {
+      "seed": 0,
+      "method": "Replay-300 (Research)",
+      "saved_artifacts_valid": true
+    },
+    {
+      "seed": 0,
+      "method": "Replay-64KiB",
+      "saved_artifacts_valid": true
+    },
+    {
+      "seed": 0,
+      "method": "EWC",
+      "saved_artifacts_valid": true
+    },
+    {
+      "seed": 0,
+      "method": "DER++-300",
+      "saved_artifacts_valid": true
+    },
+    {
+      "seed": 0,
+      "method": "MNEMA",
+      "saved_artifacts_valid": true
+    }
+  ],
+  "reproducibility": {
+    "0:Naive MLP": "exact match excluding wall time and result digest",
+    "0:Replay-300 (Research)": "exact match excluding wall time and result digest",
+    "0:Replay-64KiB": "exact match excluding wall time and result digest",
+    "0:EWC": "exact match excluding wall time and result digest",
+    "0:DER++-300": "exact match excluding wall time and result digest",
+    "0:MNEMA": "exact match excluding wall time and result digest"
+  },
+  "all_passed": true
+}

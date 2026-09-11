@@ -2,9 +2,13 @@
 .venv/
 __pycache__/
 *.pyc
+.benchmark-actions/
 
 # Dataset downloads
 data/
+
+# Preserve --force archives locally without including obsolete benchmark artifacts.
+results/research_benchmark/*_archive_*/
 
 # OS artifacts
 .DS_Store

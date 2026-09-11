@@ -1,0 +1,5 @@
+# Standalone research benchmark environment tested with Python 3.11.7.
+# Uses existing project dependencies; does not change the historical pyproject.
+numpy==2.2.6
+matplotlib==3.10.3
+PyYAML==6.0.2

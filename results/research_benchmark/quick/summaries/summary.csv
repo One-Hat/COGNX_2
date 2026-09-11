@@ -1,0 +1,7 @@
+mode,method,final_acc_mean,final_acc_sd,forgetting_mean_pp,forgetting_sd_pp,adaptive_bytes,fixed_bytes,auxiliary_content_bytes,auxiliary_allocated_bytes,resident_array_bytes
+quick,Naive MLP,19.400000000000002,,98.25,,814120.0,0.0,0.0,0.0,814120.0
+quick,Replay-300 (Research),65.4,,37.5,,814120.0,0.0,235516.0,235516.0,1049636.0
+quick,Replay-64KiB,67.0,,35.0,,814120.0,0.0,65171.0,65171.0,879291.0
+quick,EWC,19.6,,98.0,,814120.0,0.0,6512960.0,6512960.0,7327080.0
+quick,DER++-300,72.0,,26.75,,814120.0,0.0,247516.0,247516.0,1061636.0
+quick,MNEMA,71.2,,24.25,,3408032.0,524316.0,73388.0,458752.0,4391100.0
